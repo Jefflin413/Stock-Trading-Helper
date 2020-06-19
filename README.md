@@ -1,0 +1,2 @@
+# Stock-Trading-Helper
+This project aims to develop a web application that is useful and convenient for people who want to do algorithmic trading. The features include a real-time stock chart with multiple adjustable options; a trading strategy setting function which allows user to arbitrarily compose provided indicator frameworks to set multiple automated trading programs; a backtesting function that is used to examine the effeteness of a strategy.
