@@ -1,5 +1,5 @@
 # Stock-Trading-Helper
-This project aims to develop a web application that is useful and convenient for people who want to do algorithmic trading. The features include a real-time stock chart with multiple adjustable options; a trading strategy setting function which allows user to arbitrarily compose provided indicator frameworks to set multiple automated trading programs; a backtesting function that is used to examine the effeteness of a strategy.
+This project aims to develop a web application that is useful and convenient for people who want to do algorithmic trading. The features include a real-time stock chart with multiple adjustable options; a trading strategy setting function which allows user to arbitrarily compose several conditions to set multiple automated trading programs; a backtesting function that is used to examine the effectiveness of a strategy.
 
 The conceptual figure of the design is shown below
 ![image](https://github.com/Jefflin413/Stock-Trading-Helper/blob/master/prototype.png)
@@ -52,5 +52,25 @@ The conceptual figure of the design is shown below
       * Parameters:
          * Start: the starting day, a string in the format "yyyy/mm/dd"
 
-## Strategy
-The Strategy is an automated trading function that can help users make transactions in an accurate, quick and efficient way. Strategies are actions triggered by a combination of several conditions on technical indicators, stock market price and other criteria. It performs the pre-defined action after the given condition is satisfied. For example, we first create two indicators, EMA200 and EMA50, which indicate the EMA of the latest 200 days and 50 days respectively. Then we can make a strategy that will send a selling order to the market when EMA200 and EMA50 intersect with each other and after that EMA200 is higher than EMA50           
+## Strategy and Backtesting
+The Strategy is an automated trading function that can help users make transactions in an accurate, quick and efficient way. Strategies are actions triggered by a combination of several conditions on technical indicators, stock market price and other criteria. It performs the pre-defined action after the given condition is satisfied. For example, we first create two indicators, EMA200 and EMA50, which indicate the EMA of the latest 200 days and 50 days respectively. Then we can make a strategy that will send a selling order to the market when EMA200 and EMA50 intersect with each other. 
+
+A strategy is formed by actions and conditions composed of logic operations. The first step of creating a strategy is to add an action with a condition/conditions. A condition should be an equation or an inequality following the below format:
+* \[Object\] \[Operation Symbol\] \[Object\] \[Optional Operation\]
+* Object: can be a numerical value, the stock price, profit, loss, position, or a technical indicator that is related to the current selected stock symbol.
+* Operation Symbol: +, -, *, /, >, <, =, >=, <=, !=. An Object is required after an Operation Symbol 
+* Optional Operation: additional Operations follow the pattern: \[Operation Symbol\] \[Object\]
+
+After the first condition is created, you can add new conditions and choose a relation from AND and OR to decide the logical relationship between conditions, parentheses are also available to perform a better logic. The second step is to set a trading action triggered when the conditions being satisfied, the available actions are
+* BUY(Quantity) 
+* SELL(Quantity) 
+* FLAT
+
+The following examples a possible strategy format: <br>
+Strategy_1: { <br>
+\[ACTION_1\]: \[CONDITION_1\] AND (\[CONDITION_2\] OR \[CONDITION_3\]), <br>
+\[ACTION_2\]: \[CONDITION_4\]  <br>
+} <br>
+
+Backtesting function is used to examine the effectiveness of a strategy. After a strategy is generated, before it is activated on the real-time market data, user can choose a specific period of time and the strategy will be implemented on the historical data in that period to see the result (profit and loss, position and return rate). To use this function the user just need to determine the start date and the end date.
+
