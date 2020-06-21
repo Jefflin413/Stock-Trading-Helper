@@ -2,7 +2,7 @@
 This project aims to develop a web application that is useful and convenient for people who want to do algorithmic trading. The features include a real-time stock chart with multiple adjustable options; a trading strategy setting function which allows user to arbitrarily compose several conditions to set multiple automated trading programs; a backtesting function that is used to examine the effectiveness of a strategy.
 
 The conceptual figure of the design is shown below
-![image](https://github.com/Jefflin413/Stock-Trading-Helper/blob/master/prototype.png)
+![website appearance](https://github.com/Jefflin413/Stock-Trading-Helper/blob/master/prototype.png)
 
 # Features
 ## Real-time Stock Chart
@@ -72,5 +72,8 @@ Strategy_1: { <br>
 \[ACTION_2\]: \[CONDITION_4\]  <br>
 } <br>
 
-Backtesting function is used to examine the effectiveness of a strategy. After a strategy is generated, before it is activated on the real-time market data, user can choose a specific period of time and the strategy will be implemented on the historical data in that period to see the result (profit and loss, position and return rate). To use this function the user just need to determine the start date and the end date.
+Backtesting function is used to examine the effectiveness of a strategy. After a strategy is generated, before it is activated on the real-time market data, user can choose a specific period of time and the strategy will be implemented on the historical data in that period to see the result (profit and loss, position and revenue). To use this function the user just need to determine the start date and the end date.
 
+# System Architecture
+The system architecture is shown below
+![system architecture](https://github.com/Jefflin413/Stock-Trading-Helper/blob/master/system%20architecture.png)
