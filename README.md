@@ -77,3 +77,28 @@ Backtesting function is used to examine the effectiveness of a strategy. After a
 # System Architecture
 The system architecture is shown below
 ![system architecture](https://github.com/Jefflin413/Stock-Trading-Helper/blob/master/system%20architecture.png)
+
+# Project Schedule
+1. Confirm Data Source: <br>
+Mission: make sure to have a real-time stock market data source, as well as the historical data. It can come from a single source or a combination of multiple sources, free or tolled. Write a program to test the availability and usage of the source. <br> 
+Minimum Requirements: refreshing rate is smaller or equals to second, 10+ types of stock, contain OHLC data. <br>
+Deadline: 2020/6/22 23:59 <br>
+2. Construct Distributed Database: <br>
+Mission: construct a distributed database on 2 Google VM instances using Cassandra. Create a table to store stock historical data, and create another table to store strategies. The latest data should be updated on the database continuously. Add some testing cases into the strategy table, and write a program to repetitively pull data from the stock historical data table and strategy table. <br>
+Deadline: 2020/6/24 23:59 <br>
+3. Construct Stream Processing System: <br>
+Mission: construct a system which is able to consume data repetitively pulled from the database. Using Kafka to treat the data coming from the database as a producer/producers, separately store them into stock strategy topics and stock data topics with respect to their stock type. Initiate 2 Google VM to be the consumers and process the received data. Ideally there should be a way to tell Kafka to directly continuously pull data from the database, thus we can reduce intermediate resources. Another problem might be how to split a big size data into multiple smaller size data which is more suitable for Kafka system. <br>
+Minimum Requirements: the system should be able to split messages and give them to the corresponding processors. <br> 
+Deadline: 2020/6/27 23:59 <br>
+4. Find an Executor, Test strategy processor: <br>
+Mission: find a stock trading software or website that can use api to make orders for a virtual account on the real market data. Make the processor be able to parse strategy raw data and send transaction order by making judgement on market data based on the parsed strategy. Search for famous trading strategies based on the provided 5 types of indicator and see how much revenue it can make <br>
+Minimum Requirements: at least 1 strategy should be tested <br>
+Deadline: 2020/6/29 23:59 <br>
+5. Construct the Back-end of the Website, Implement Basic Functions: <br>
+Mission: learn Java and Spring to build a back-end system with a simple HTML front-end to display received information. need a authentication function because an account is required for most of the functions on the website. Account data should also be stored in the Account table in the database: Accounts(account_id, password, api_key, balance, balance_virtual). Create a table Stocks_Private in the database to store the personal position of each stock, when an account is created, automatically add an instance for every type of stock in this table and bond to the created account, the information in this table won't be shown in the front-end at this step. <br>
+Minimum Requirements: register, login, logout and display account information on the front-end <br>
+Deadline: 2020/7/4 23:59 <br>
+6. Display Market as well as Personal Stock Data on the Front-end and Make a Buy Function and a Sell Function
+7. Add Indicator Editor Function 
+8. Make a Strategy Generator Function
+9. Improve the Appearance of the website
