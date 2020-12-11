@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+  <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <property name="defaultViews">
+      <list>
+        <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+        <bean class="org.springframework.web.servlet.view.xml.MappingJackson2XmlView"/>
+      </list>
+    </property>
+  </bean>
+
+  <bean class="org.example.web.view.php.QuercusViewResolver">
+    <property name="prefix" value="/page/"/>
+    <property name="suffix" value=".php"/>
+    <property name="viewNames" value="php/*"/>
+  </bean>
+
+  <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+    <property name="characterEncoding" value="UTF-8"/>
+    <property name="templateEngine">
+      <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <property name="dialects">
+          <set>
+            <bean class="org.thymeleaf.spring5.dialect.SpringStandardDialect"/>
+          </set>
+        </property>
+        <property name="templateResolvers">
+          <set>
+            <bean class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+              <property name="cacheable" value="false"/>
+              <property name="prefix" value="/page/"/>
+              <property name="suffix" value=".html"/>
+              <property name="templateMode" value="HTML5"/>
+            </bean>
+          </set>
+        </property>
+      </bean>
+    </property>
+    <property name="viewNames" value="thymeleaf/*"/>
+  </bean>
+
+  <context:annotation-config/>
+  <context:component-scan base-package="org.example.web"/>
+
+  <mvc:annotation-driven>
+    <mvc:message-converters>
+      <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+      <bean class="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter"/>
+      <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+      <bean class="org.example.web.converter.ProtocolBufferHttpMessageConverter"/>
+    </mvc:message-converters>
+  </mvc:annotation-driven>
+  <mvc:resources location="/css/" mapping="/c/**"/>
+  <mvc:resources location="/image/" mapping="/i/**"/>
+  <mvc:resources location="/script/" mapping="/s/**"/>
+</beans>

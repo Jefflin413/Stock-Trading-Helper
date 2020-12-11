@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:inline="text">
+<head th:replace="thymeleaf/layout :: head(~{:: title})">
+  <title>Spring Web MVC</title>
+</head>
+<body role="document">
+<div th:replace="thymeleaf/layout :: #menu"></div>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Spring Web MVC</h1>
+    <p>
+      Spring Web MVC is a Java based framework that facilitates web development
+      through the use of the <code>model-view-controller</code> pattern.
+    </p>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Spring Web MVC features</h4>
+    </div>
+    <div class="panel-body">
+      <p>
+        This sample application demonstrates the use of the following features
+        of the Spring Web MVC framework:
+      </p>
+    <ol>
+      <li>Templating
+        <ol type="a">
+          <li><a th:href="@{/php}">PHP</a></li>
+        </ol>
+      </li>
+      <li>Form binding
+        <ol type="a">
+          <li><a th:href="@{/form}">Binding Java enumerations</a></li>
+        </ol>
+      </li>
+      <li>REST calls
+        <ol type="a">
+          <li><a th:href="@{/rest.html}">Data representations</a></li>
+          <li><a th:href="@{/graph.html}">Object graph</a></li>
+          <li><a th:href="@{/generics.html}">Generics</a></li>
+        </ol>
+      </li>
+    </ol>
+    </div>
+  </div>
+</div>
+<div th:replace="thymeleaf/layout :: #footer"></div>
+</body>
+</html>
